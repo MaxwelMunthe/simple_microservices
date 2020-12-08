@@ -1,0 +1,49 @@
+syntax = "proto3";
+package proto;
+option go_package = "proto;accountpb";
+
+service AccountService {
+    rpc CreateAccount(CreateAccountReq) returns (CreateAccountRes);
+    rpc ReadAccount(ReadAccountReq) returns (ReadAccountRes);
+    rpc UpdateAccount(UpdateAccountReq) returns (UpdateAccountRes);
+    rpc DeleteAccount(DeleteAccountReq) returns (DeleteAccountRes);
+}
+
+message Account {
+    string id = 1;
+    string name = 2;
+    string address = 3;
+    string phone_number= 4;
+}
+
+message CreateAccountReq {
+    Account account = 1;
+}
+
+message CreateAccountRes {
+    Account account = 1;
+}
+
+message UpdateAccountReq {
+    Account account = 1;
+}
+
+message UpdateAccountRes {
+    Account account = 1;
+}
+
+message ReadAccountReq {
+    string id = 1;
+}
+
+message ReadAccountRes {
+    Account account = 1;
+}
+
+message DeleteAccountReq {
+    string id = 1;
+}
+
+message DeleteAccountRes {
+    bool success = 1;
+}

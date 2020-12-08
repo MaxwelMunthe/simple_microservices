@@ -1,0 +1,49 @@
+syntax = "proto3";
+package proto;
+option go_package = "proto;loanpb";
+
+service LoanService {
+    rpc CreateLoan (CreateLoanReq) returns (CreateLoanRes);
+    rpc ReadLoan (ReadLoanReq) returns (ReadLoanRes);
+    rpc UpdateLoan (UpdateLoanReq) returns (UpdateLoanRes);
+    rpc DeleteLoan (DeleteLoanReq) returns (DeleteLoanRes);
+}
+
+message Loan {
+    string id = 1;
+    string name = 2;
+    string book_name = 3;
+    string loan_duration = 4;
+}
+
+message CreateLoanReq {
+    Loan loan = 1;
+}
+
+message CreateLoanRes {
+    Loan loan = 1;
+}
+
+message UpdateLoanReq {
+    Loan loan = 1;
+}
+
+message UpdateLoanRes {
+    Loan loan = 1;
+}
+
+message ReadLoanReq {
+    string id = 1;
+}
+
+message ReadLoanRes {
+    Loan loan = 1;
+}
+
+message DeleteLoanReq {
+    string id = 1;
+}
+
+message DeleteLoanRes {
+    bool success = 1;
+}

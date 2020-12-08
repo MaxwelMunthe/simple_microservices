@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_DATABASE=local_db
+    networks:
+      - solution_networks
+  solution:
+    container_name: solutions
+    image: solution
+    ports:
+      - 8080:8080
+    networks:
+      - solution_networks
+    depends_on:
+      - mongo
+networks:
+  solution_networks:
+    name: solution_networks
